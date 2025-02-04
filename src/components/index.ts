@@ -1,3 +1,9 @@
+export {default as AddFavorites} from './AddFavorites/AddFavorites';
+export {default as DetailsButton} from './MovieDetails/DetailsButton';
+export {default as Loader} from './Loader/Loader'; 
 export {default as MovieItem} from './MovieItem/MovieItem'; 
 export {default as MoviesList} from './MoviesList/MoviesList'; 
-export {default as SearchMovie} from './SearchMovie/SearchMovie'; 
+export {default as MovieDetails} from './MovieDetails/MovieDetails';
+export {default as Nav} from './Nav/Nav';
+export {default as NavItem} from './Nav/NavItem';
+export {default as SearchMovie} from './SearchMovie/SearchMovie';
