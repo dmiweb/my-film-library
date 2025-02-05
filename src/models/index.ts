@@ -48,3 +48,11 @@ export type TMovieDetails = {
   Website: string;
   Response: string;
 };
+
+export type MoviesState = {
+  movies: TMovies | null;
+  loading: boolean;
+  error: string;
+  movieDetails: TMovieDetails | null,
+  favorites: TMovie[],
+}
