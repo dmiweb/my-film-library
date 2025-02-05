@@ -26,9 +26,11 @@ const MoviePage = () => {
     <>
       <Nav />
       {loading && <Loader />}
+      
       <div className="movie-details-container">
         {!loading && movieDetails && <MovieDetails movie={movieDetails} />}
       </div>
+      {error && <div className="error-message">{error}</div>}
     </>
 
   );

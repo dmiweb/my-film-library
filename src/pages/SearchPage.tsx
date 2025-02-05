@@ -9,7 +9,6 @@ const SearchPage = () => {
   return (
     <>
       {loading && <span className="loader"></span>}
-      {error && <div className="error-message">{error}</div>}
       <Nav />
       <SearchMovie />
       {
@@ -20,6 +19,7 @@ const SearchPage = () => {
         movies?.Response === 'True' &&
         <MoviesList movies={moviesList} />
       }
+      {error && <div className="error-message">{error}</div>}
     </>
   );
 }

@@ -50,7 +50,7 @@ export const moviesSlice = createSliceWithThunk({
 
           return await response.json();
         } catch (e) {
-          return rejectWithValue(e);
+          return rejectWithValue("Loading movies error!");
         }
       },
       {
@@ -84,10 +84,11 @@ export const moviesSlice = createSliceWithThunk({
 
           return await response.json();
         } catch (e) {
-          if (signal?.aborted) {
+          if (signal.aborted) {
             return rejectWithValue("Request aborted");
           }
-          return rejectWithValue(e);
+          console.log(e)
+          return rejectWithValue("Error loading movie details!");
         }
       },
       {
