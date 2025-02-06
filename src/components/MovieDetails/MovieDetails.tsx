@@ -2,7 +2,6 @@ import { TMovieDetails } from "../../models";
 import { AddFavorites } from "../../components";
 
 const MovieDetails = ({ movie }: { movie: TMovieDetails }) => {
-
   return (
     <>
       <h2 className="movie-details__title">{movie.Title}</h2>

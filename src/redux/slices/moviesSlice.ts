@@ -2,6 +2,7 @@ import { buildCreateSlice, asyncThunkCreator, PayloadAction } from "@reduxjs/too
 import { TMovies, TMovie, TMovieDetails, MoviesState } from "../../models";
 
 const initialState = {
+  querySearch: "",
   movies: null,
   loading: false,
   error: "",
@@ -17,6 +18,9 @@ export const moviesSlice = createSliceWithThunk({
   name: "movies",
   initialState,
   reducers: (create) => ({
+    saveQuerySearch: create.reducer((state, action: PayloadAction<string>) => {
+      state.querySearch = action.payload;
+    }),
     addFavoritesMovie: create.reducer((state, action: PayloadAction<TMovie>) => {
       if (state.movies && state.movies.Search) {
         state.movies.Search = state.movies.Search.map((movie) => {
@@ -39,6 +43,9 @@ export const moviesSlice = createSliceWithThunk({
         }));
       }
     }),
+    clearMovies: create.reducer((state) => {
+      state.movies = null;
+    }),
     fetchMovies: create.asyncThunk<TMovies, string>(
       async (url, { rejectWithValue }) => {
         try {
@@ -50,6 +57,7 @@ export const moviesSlice = createSliceWithThunk({
 
           return await response.json();
         } catch (e) {
+          console.log(e)
           return rejectWithValue("Loading movies error!");
         }
       },
@@ -114,8 +122,10 @@ export const moviesSlice = createSliceWithThunk({
 });
 
 export const {
+  saveQuerySearch,
   addFavoritesMovie,
   removeFavoritesMovie,
+  clearMovies,
   fetchMovies,
   fetchMovieDetails,
 } = moviesSlice.actions;

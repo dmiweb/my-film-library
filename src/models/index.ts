@@ -50,9 +50,10 @@ export type TMovieDetails = {
 };
 
 export type MoviesState = {
+  querySearch: string;
   movies: TMovies | null;
   loading: boolean;
   error: string | null;
-  movieDetails: TMovieDetails | null,
-  favorites: TMovie[],
+  movieDetails: TMovieDetails | null;
+  favorites: TMovie[];
 }

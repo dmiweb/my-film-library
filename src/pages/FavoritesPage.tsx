@@ -1,5 +1,4 @@
 import { useAppSelector } from "../hooks";
-import { TMovies } from "../models";
 import { Nav, MoviesList } from "../components";
 
 const FavoritesPage = () => {

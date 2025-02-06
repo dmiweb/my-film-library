@@ -21,7 +21,6 @@ const MoviePage = () => {
     return () => abortController.abort();
   }, [dispatch, apiKey, url, id]);
 
-
   return (
     <>
       <Nav />
