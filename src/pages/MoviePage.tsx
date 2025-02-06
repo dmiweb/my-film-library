@@ -10,13 +10,13 @@ const MoviePage = () => {
   const { id } = useParams<{ id: string }>();
 
   const dispatch = useAppDispatch();
-  const { movieDetails, loading, error } = useAppSelector((state) => state.movies);
+  const { movieDetails, error } = useAppSelector((state) => state.movies);
 
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
 
-    dispatch(fetchMovieDetails({url:`${url}?apikey=${apiKey}&i=${id}`, signal: signal}));
+    dispatch(fetchMovieDetails({ url: `${url}?apikey=${apiKey}&i=${id}`, signal: signal }));
 
     return () => abortController.abort();
   }, [dispatch, apiKey, url, id]);
@@ -25,10 +25,9 @@ const MoviePage = () => {
   return (
     <>
       <Nav />
-      {loading && <Loader />}
-      
+      {!movieDetails && !error && <Loader />}
       <div className="movie-details-container">
-        {!loading && movieDetails && <MovieDetails movie={movieDetails} />}
+        {movieDetails && <MovieDetails movie={movieDetails} />}
       </div>
       {error && <div className="error-message">{error}</div>}
     </>

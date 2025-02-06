@@ -57,6 +57,7 @@ export const moviesSlice = createSliceWithThunk({
         pending: (state) => {
           state.loading = true;
           state.error = "";
+          state.movies = null;
         },
         fulfilled: (state, action) => {
           state.movies = action.payload;
@@ -77,7 +78,7 @@ export const moviesSlice = createSliceWithThunk({
 
           if (!response.ok) {
             if (signal.aborted) {
-              return rejectWithValue("Request aborted");
+              return rejectWithValue(null);
             }
             return rejectWithValue("Error loading movie details!");
           }
@@ -85,7 +86,7 @@ export const moviesSlice = createSliceWithThunk({
           return await response.json();
         } catch (e) {
           if (signal.aborted) {
-            return rejectWithValue("Request aborted");
+            return rejectWithValue(null);
           }
           console.log(e)
           return rejectWithValue("Error loading movie details!");
@@ -95,13 +96,14 @@ export const moviesSlice = createSliceWithThunk({
         pending: (state) => {
           state.loading = true;
           state.error = "";
+          state.movieDetails = null;
         },
         fulfilled: (state, action) => {
           state.movieDetails = action.payload;
           state.error = "";
         },
         rejected: (state, action) => {
-          state.error = action.payload as string;
+          state.error = action.payload as string | null;
         },
         settled: (state) => {
           state.loading = false;

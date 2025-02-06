@@ -1,6 +1,7 @@
+import { TMovieDetails } from "../../models";
 import { AddFavorites } from "../../components";
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie }: { movie: TMovieDetails }) => {
 
   return (
     <>
@@ -21,18 +22,7 @@ const MovieDetails = ({ movie }) => {
         <AddFavorites movie={movie} />
       </div>
     </>
-
   );
 }
 
 export default MovieDetails;
-
-
-// постер фильма(Poster)
-// название фильма(Title)
-// год выпуска(Year)
-// жанр(Genre)
-// продолжительность(Runtime)
-// режиссер(Director)
-// актеры(Actors)
-// рейтинг фильма(imdbRating)

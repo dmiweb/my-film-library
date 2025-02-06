@@ -52,7 +52,7 @@ export type TMovieDetails = {
 export type MoviesState = {
   movies: TMovies | null;
   loading: boolean;
-  error: string;
+  error: string | null;
   movieDetails: TMovieDetails | null,
   favorites: TMovie[],
 }
