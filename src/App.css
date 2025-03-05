@@ -234,3 +234,20 @@
   font-size: 1.3rem;
   text-align: center;
 }
+
+@media (max-width: 767px) {
+  .movie-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .movie-details__poster {
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #d4d4d4;
+    object-fit: cover;
+  }
+}
