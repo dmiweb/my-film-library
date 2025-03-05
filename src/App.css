@@ -244,7 +244,7 @@
 
   .movie-details__poster {
     display: block;
-    width: 300px;
+    max-width: 300px;
     margin: 0 auto;
     border-radius: 5px;
     background-color: #d4d4d4;
